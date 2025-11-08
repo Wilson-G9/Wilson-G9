@@ -1,0 +1,39 @@
+# .gitattributes — tune GitHub Linguist language stats
+# Place this file at the repository root. Adjust paths below to match your repo layout.
+
+# Exclude common notebook formats (treat as vendored/documentation so Linguist ignores them)
+*.ipynb linguist-vendored
+*.ipynb linguist-documentation
+
+# Exclude directories that often contain generated or vendor code
+notebooks/** linguist-vendored
+data/** linguist-vendored
+vendor/** linguist-vendored
+third_party/** linguist-vendored
+external/** linguist-vendored
+
+# Mark generated code so Linguist ignores it
+generated/** linguist-generated
+build/** linguist-generated
+dist/** linguist-generated
+*.min.js linguist-generated
+
+# Docs and examples (if they are mostly prose)
+docs/** linguist-documentation
+examples/** linguist-documentation
+
+# If you have large Python vendor libs or protobuf/auto-generated Python files,
+# point them here so they won't inflate the Python percentage.
+# e.g. sensors/third_party_lib/** linguist-vendored
+
+# Force a specific file or folder to be treated as a different language
+# (uncomment and edit paths as needed)
+# path/to/some_script.py linguist-language=Text
+# web/frontend/dist/** linguist-language=JavaScript
+
+# Notes:
+# - After you commit & push this file, GitHub will re-calculate language stats (may take a few minutes).
+# - Use linguist-vendored for vendored dependencies and large generated sources.
+# - Use linguist-generated for machine-generated code you want ignored.
+# - Use linguist-documentation for notebooks, markdown-heavy docs, or example data.
+# - Do NOT use these attributes to hide important application source code from reviewers.
